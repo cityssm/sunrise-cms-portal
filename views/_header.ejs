@@ -1,0 +1,31 @@
+<!-- eslint-disable html/require-closing-tags -->
+<!doctype html>
+<% const backgroundImageUrl = urlPrefix + configFunctions.getConfigProperty('application.backgroundUrl') %>
+<html
+  class="has-background-grey"
+  data-theme="light"
+  style="background-image:url('<%= backgroundImageUrl %>')"
+  lang="en"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>
+      <%= headTitle %>: <%=
+      configFunctions.getConfigProperty("application.applicationName") %>
+    </title>
+
+    <link href="<%= urlPrefix %>/lib/bulma/bulma.min.css" rel="stylesheet" />
+    <link href="<%= urlPrefix %>/stylesheets/sunrise.css" rel="stylesheet" />
+
+    <link
+      href="<%= urlPrefix + configFunctions.getConfigProperty('application.logoUrl') %>"
+      rel="icon"
+    />
+  </head>
+
+  <body>
+    <div class="container p-2">
+      <div class="box">
+
+      

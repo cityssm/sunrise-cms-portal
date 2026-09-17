@@ -1,0 +1,22 @@
+<%- include('_header'); -%>
+
+<h1 class="title">
+  <%= configFunctions.getConfigProperty("application.applicationName") %>
+</h1>
+
+<% if (configFunctions.getConfigProperty("features.orderForm.isEnabled") && configFunctions.getConfigProperty("features.orderForm.hasDashboardLink")) { %>
+<a class="box" href="/<%= configFunctions.getConfigProperty('features.orderForm.route') %>">
+  <div class="media">
+    <div class="media-left">
+      <i class="fa-solid fa-4x fa-pen-to-square"></i>
+    </div>
+    <div class="media-content">
+      <p class="title is-4 mb-1">Order Form</p>
+      <p>Submit a request for cemetery services through the order form.</p>
+    </div>
+  </div>
+</a>
+<% } %>
+
+<%- include('_footerA'); -%>
+<%- include('_footerB'); -%>

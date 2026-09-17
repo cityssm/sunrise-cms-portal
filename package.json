@@ -1,0 +1,56 @@
+{
+  "name": "sunrise-cms-portal",
+  "version": "1.0.0-dev",
+  "private": true,
+  "description": "A portal for funeral homes and the general public to interface with the Sunrise CMS (Cemetery Management System)",
+  "keywords": [
+    "sunrise-cms",
+    "cemetery-management"
+  ],
+  "homepage": "https://github.com/cityssm/sunrise-cms-portal#readme",
+  "bugs": {
+    "url": "https://github.com/cityssm/sunrise-cms-portal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cityssm/sunrise-cms-portal.git"
+  },
+  "license": "MIT",
+  "author": "The Corporation of the City of Sault Ste. Marie",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "start": "node ./index.js"
+  },
+  "dependencies": {
+    "@cityssm/bulma-js": "^1.0.0-rc.4",
+    "@cityssm/configurator": "^0.2.0",
+    "@cityssm/express-abuse-points": "^3.3.0",
+    "@cityssm/utils-datetime": "^1.4.0",
+    "@fortawesome/fontawesome-free": "^7.3.1",
+    "better-sqlite3": "^13.0.3",
+    "bulma": "^1.0.4",
+    "chokidar": "^5.0.0",
+    "compression": "^1.8.2",
+    "cookie-parser": "^1.4.7",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "http-errors": "^2.0.1",
+    "sunrise-cms-shared": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.5.0",
+    "eslint-config-cityssm": "^52.0.0",
+    "nodemon": "^3.1.14",
+    "prettier-config-cityssm": "^2.2.0"
+  },
+  "optionalDependencies": {
+    "node-windows": "^1.0.0-beta.8"
+  },
+  "allowScripts": {
+    "better-sqlite3@13.0.3": true
+  }
+}

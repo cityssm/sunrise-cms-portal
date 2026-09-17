@@ -1,0 +1,211 @@
+<%- include('_header'); -%>
+
+<h1 class="title">
+  Order Form
+</h1>
+
+<form id="form--orderForm">
+  <div class="field">
+    <label class="label" for="orderForm--contractTypeId">Contract Type</label>
+    <div class="control">
+      <div class="select is-fullwidth">
+        <select id="orderForm--contractTypeId" name="contractTypeId" required>
+          <option value="">(Select a Contract Type)</option>
+          <% for (const contractType of contractTypes) { %>
+          <option
+            value="<%= contractType.contractTypeId %>"
+          >
+            <%= contractType.contractType %>
+          </option>
+          <% } %>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <fieldset>
+    <legend class="title is-4">Funeral Home</legend>
+
+    <div class="field">
+      <label class="label" for="orderForm--funeralHome">Funeral Home</label>
+      <div class="control">
+        <div class="select is-fullwidth">
+          <select id="orderForm--funeralHome" name="funeralHome" required>
+            <option value="">(No Funeral Home Selected)</option>
+            <% if (funeralHomes.length > 0) { %>
+            <optgroup label="Available Funeral Homes">
+              <!-- eslint-disable-next-line html/indent -->
+            <% } %>
+              <% for (const funeralHome of funeralHomes) { %>
+              <option
+                data-funeral-home-address1="<%= funeralHome.funeralHomeAddress1 %>"
+                data-funeral-home-address2="<%= funeralHome.funeralHomeAddress2 %>"
+                data-funeral-home-city="<%= funeralHome.funeralHomeCity %>"
+                data-funeral-home-postal-code="<%= funeralHome.funeralHomePostalCode %>"
+                data-funeral-home-province="<%= funeralHome.funeralHomeProvince %>"
+                data-funeral-home-phone-number="<%= funeralHome.funeralHomePhoneNumber %>"
+                value="<%= funeralHome.funeralHomeId %>"
+              >
+                <%= funeralHome.funeralHomeName %>
+              </option>
+              <% } %>
+              <!-- eslint-disable-next-line html/indent -->
+            <% if (funeralHomes.length > 0) { %>
+            </optgroup>
+            <% } %>
+            <option value="-1">Other Funeral Home</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="orderForm--funeralHomeName">Funeral Home Name</label>
+      <div class="control">
+        <input
+          class="input"
+          id="orderForm--funeralHomeName"
+          name="funeralHomeName"
+          type="text"
+          maxlength="200"
+          disabled
+          required
+        />
+      </div>
+    </div>
+
+    <label class="label" for="orderForm--funeralHomeAddress1">Funeral Home Address</label>
+    <div class="field">
+      <div class="control">
+        <input
+          class="input"
+          id="orderForm--funeralHomeAddress1"
+          name="funeralHomeAddress1"
+          type="text"
+          maxlength="50"
+          placeholder="Address Line 1"
+          disabled
+          required
+        />
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input
+          class="input"
+          id="orderForm--funeralHomeAddress2"
+          name="funeralHomeAddress2"
+          type="text"
+          maxlength="50"
+          aria-label="Address Line 2"
+          placeholder="Address Line 2"
+          disabled
+        />
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--funeralHomeCity">City</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--funeralHomeCity"
+              name="funeralHomeCity"
+              type="text"
+              maxlength="20"
+              disabled
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--funeralHomeProvince">Province</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--funeralHomeProvince"
+              name="funeralHomeProvince"
+              type="text"
+              maxlength="2"
+              disabled
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--funeralHomePostalCode">Postal Code</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--funeralHomePostalCode"
+              name="funeralHomePostalCode"
+              type="text"
+              minlength="5"
+              maxlength="7"
+              disabled
+              pattern="^[A-Za-z\d \-]+$"
+              required
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--funeralHomePhoneNumber">Phone Number</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--funeralHomePhoneNumber"
+              name="funeralHomePhoneNumber"
+              type="text"
+              maxlength="30"
+              disabled
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--funeralDirectorName">Funeral Director</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--funeralDirectorName"
+              name="funeralDirectorName"
+              type="text"
+              maxlength="100"
+              disabled
+              required
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </fieldset>
+
+  <hr />
+
+  <fieldset>
+    <legend class="title is-4">Purchaser</legend>
+  </fieldset>
+</form>
+
+<%- include('_footerA'); -%>
+
+<script src="<%= urlPrefix %>/javascripts/orderForm.js"></script>
+
+<%- include('_footerB'); -%>
