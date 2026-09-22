@@ -129,12 +129,12 @@
     cemeteryIdSelectElement.addEventListener('change', updateCemeteryFields);
     updateCemeteryFields();
     const orderFormElement = document.querySelector('#form--orderForm');
-    let formIsSubmitting = false;
+    let isFormSubmitting = false;
     async function submitOrderForm() {
-        if (orderFormElement === null || formIsSubmitting) {
+        if (orderFormElement === null || isFormSubmitting) {
             return;
         }
-        formIsSubmitting = true;
+        isFormSubmitting = true;
         const formData = new FormData(orderFormElement);
         const formObject = {};
         formData.forEach((value, key) => {
@@ -189,7 +189,7 @@
                 },
                 method: 'POST'
             });
-            formIsSubmitting = false;
+            isFormSubmitting = false;
             const data = (await result.json());
             if (data.success) {
                 orderFormElement.insertAdjacentHTML('beforebegin', `
@@ -201,16 +201,16 @@
             }
             else {
                 bulmaJS.alert({
-                    message: 'Failed to submit order form. Please try again.',
-                    contextualColorName: 'danger'
+                    contextualColorName: 'danger',
+                    message: 'Failed to submit order form. Please try again.'
                 });
             }
         }
         catch {
-            formIsSubmitting = false;
+            isFormSubmitting = false;
             bulmaJS.alert({
-                message: 'Error submitting order form. Please try again.',
-                contextualColorName: 'danger'
+                contextualColorName: 'danger',
+                message: 'Error submitting order form. Please try again.'
             });
         }
     }

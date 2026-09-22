@@ -270,14 +270,14 @@ declare const exports: {
   const orderFormElement =
     document.querySelector<HTMLFormElement>('#form--orderForm')
 
-  let formIsSubmitting = false
+  let isFormSubmitting = false
 
-  async function submitOrderForm() {
-    if (orderFormElement === null || formIsSubmitting) {
+  async function submitOrderForm(): Promise<void> {
+    if (orderFormElement === null || isFormSubmitting) {
       return
     }
 
-    formIsSubmitting = true
+    isFormSubmitting = true
 
     // Get form data as an object
     const formData = new FormData(orderFormElement)
@@ -384,11 +384,11 @@ declare const exports: {
       })
 
       // eslint-disable-next-line require-atomic-updates
-      formIsSubmitting = false
+      isFormSubmitting = false
 
       const data = (await result.json()) as {
-        success: boolean
         orderFormKey: string
+        success: boolean
       }
 
       if (data.success) {
@@ -405,17 +405,17 @@ declare const exports: {
         orderFormElement.remove()
       } else {
         bulmaJS.alert({
-          message: 'Failed to submit order form. Please try again.',
-          contextualColorName: 'danger'
+          contextualColorName: 'danger',
+          message: 'Failed to submit order form. Please try again.'
         })
       }
     } catch {
       // eslint-disable-next-line require-atomic-updates
-      formIsSubmitting = false
+      isFormSubmitting = false
 
       bulmaJS.alert({
-        message: 'Error submitting order form. Please try again.',
-        contextualColorName: 'danger'
+        contextualColorName: 'danger',
+        message: 'Error submitting order form. Please try again.'
       })
     }
   }

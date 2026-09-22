@@ -82,5 +82,5 @@ export default function handler(
 
   const orderFormKey = saveOrderForm(orderFormData, request.ip ?? '')
 
-  response.json({ success: true, orderFormKey })
+  response.json({ orderFormKey, success: true })
 }
