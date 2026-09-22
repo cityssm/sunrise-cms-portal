@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@cityssm/bulma-js": "^1.0.0-rc.4",
+    "@cityssm/cemetery-utils": "^0.3.0",
     "@cityssm/configurator": "^0.2.0",
     "@cityssm/express-abuse-points": "^3.3.0",
     "@cityssm/utils-datetime": "^1.4.0",
@@ -38,12 +39,15 @@
     "express": "^5.2.1",
     "express-rate-limit": "^8.7.0",
     "http-errors": "^2.0.1",
-    "sunrise-cms-shared": "^0.0.1"
+    "sunrise-cms-shared": "^0.0.6"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/compression": "^1.8.1",
+    "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
-    "@types/node": "^26.5.0",
-    "eslint-config-cityssm": "^52.0.0",
+    "@types/node": "^26.6.2",
+    "eslint-config-cityssm": "^53.0.0",
     "nodemon": "^3.1.14",
     "prettier-config-cityssm": "^2.2.0"
   },

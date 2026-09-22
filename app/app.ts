@@ -8,7 +8,7 @@ import rateLimit from 'express-rate-limit'
 import createError, { type HttpError } from 'http-errors'
 
 import { DEBUG_NAMESPACE, PROCESS_ID_MAX_DIGITS } from '../debug.config.js'
-import * as configFunctions from '../helpers/config.helpers.js'
+import configFunctions from '../helpers/config.helpers.js'
 import packageJson from '../package.json' with { type: 'json' }
 import routerDashboard from '../routes/dashboard.js'
 import routerOrderForm from '../routes/orderForm.js'

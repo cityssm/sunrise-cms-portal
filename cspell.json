@@ -8,16 +8,13 @@
     "bulma",
     "cityssm",
     "configurator",
-    "crosshairs",
     "fontawesome",
     "fullwidth",
     "gapless",
     "hoverable",
-    "ical",
     "ifnull",
     "innerhtml",
     "javascripts",
-    "latlng",
     "licence",
     "licences",
     "maxlength",
@@ -27,8 +24,6 @@
     "onhidden",
     "onremoved",
     "onshown",
-    "papaparse",
-    "pdfa",
     "preneed",
     "saultstemarie",
     "sonarjs",
@@ -38,8 +33,7 @@
   "ignorePaths": [
     "**/*.svg",
     "cypress/downloads/**",
-    "data/config.*",
-    "data/sessions/**"
+    "data/config.*"
   ],
   "ignoreWords": [],
   "import": []

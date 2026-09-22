@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/consistent-class-member-order */
-
 import fs from 'node:fs'
 
 import chokidar, { type FSWatcher } from 'chokidar'

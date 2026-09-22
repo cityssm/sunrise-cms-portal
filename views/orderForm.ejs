@@ -4,15 +4,16 @@
   Order Form
 </h1>
 
-<form id="form--orderForm">
+<form id="form--orderForm" data-action="<%= configFunctions.getConfigProperty('reverseProxy.urlPrefix') %>/<%= configFunctions.getConfigProperty('features.orderForm.route') %>/doSubmitOrderForm">
   <div class="field">
     <label class="label" for="orderForm--contractTypeId">Contract Type</label>
     <div class="control">
       <div class="select is-fullwidth">
         <select id="orderForm--contractTypeId" name="contractTypeId" required>
-          <option value="">(Select a Contract Type)</option>
+          <option data-is-preneed="true" value="">(Select a Contract Type)</option>
           <% for (const contractType of contractTypes) { %>
           <option
+            data-is-preneed="<%= contractType.isPreneed ? 'true' : 'false' %>"
             value="<%= contractType.contractTypeId %>"
           >
             <%= contractType.contractType %>
@@ -29,10 +30,10 @@
     <legend class="title is-4">Funeral Home</legend>
 
     <div class="field">
-      <label class="label" for="orderForm--funeralHome">Funeral Home</label>
+      <label class="label" for="orderForm--funeralHomeId">Funeral Home</label>
       <div class="control">
         <div class="select is-fullwidth">
-          <select id="orderForm--funeralHome" name="funeralHome" required>
+          <select id="orderForm--funeralHomeId" name="funeralHomeId">
             <option value="">(No Funeral Home Selected)</option>
             <% if (funeralHomes.length > 0) { %>
             <optgroup label="Available Funeral Homes">
@@ -199,13 +200,549 @@
 
   <hr />
 
+  <div class="columns">
+    <div class="column">
+      <fieldset>
+        <legend class="title is-4">Purchaser</legend>
+    
+        <div class="field">
+          <label class="label" for="orderForm--purchaserName">Purchaser Name</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--purchaserName"
+              name="purchaserName"
+              type="text"
+              maxlength="100"
+              required
+            />
+          </div>
+        </div>
+    
+        <div class="field">
+          <label class="label" for="orderForm--purchaserAddress1">Purchaser Address</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--purchaserAddress1"
+              name="purchaserAddress1"
+              type="text"
+              maxlength="50"
+              placeholder="Address Line 1"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="field">
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--purchaserAddress2"
+              name="purchaserAddress2"
+              type="text"
+              maxlength="50"
+              aria-label="Address Line 2"
+              placeholder="Address Line 2"
+            />
+          </div>
+        </div>
+    
+        <div class="columns">
+          <div class="column is-7">
+            <div class="field">
+              <label class="label" for="orderForm--purchaserCity">City</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--purchaserCity"
+                  name="purchaserCity"
+                  type="text"
+                  value="<%= configFunctions.getConfigProperty('features.orderForm.defaultCity') %>"
+                  maxlength="50"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="orderForm--purchaserProvince">Province</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--purchaserProvince"
+                  name="purchaserProvince"
+                  type="text"
+                  value="<%= configFunctions.getConfigProperty('features.orderForm.defaultProvince') %>"
+                  maxlength="2"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="orderForm--purchaserPostalCode">Postal Code</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--purchaserPostalCode"
+              name="purchaserPostalCode"
+              type="text"
+              minlength="5"
+              maxlength="7"
+              pattern="^[A-Za-z\d \-]+$"
+              required
+            />
+          </div>
+        </div>
+    
+        <div class="field">
+          <label class="label" for="orderForm--purchaserPhoneNumber">Purchaser Phone Number</label>
+          <div class="control has-icons-left">
+            <input
+              class="input"
+              id="orderForm--purchaserPhoneNumber"
+              name="purchaserPhoneNumber"
+              type="text"
+              maxlength="30"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa-solid fa-phone"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="orderForm--purchaserEmail">Purchaser Email</label>
+          <div class="control has-icons-left">
+            <input
+              class="input"
+              id="orderForm--purchaserEmail"
+              name="purchaserEmail"
+              type="email"
+              maxlength="100"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa-solid fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+    
+        <div class="field">
+          <label class="label" for="orderForm--purchaserRelationship">Relationship to Deceased</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--purchaserRelationship"
+              name="purchaserRelationship"
+              type="text"
+              maxlength="50"
+              list="orderForm--purchaserRelationshipList"
+            />
+          </div>
+        </div>
+        <datalist id="orderForm--purchaserRelationshipList">
+          <% for (const relationship of relationships) { %>
+          <option value="<%= relationship %>"></option>
+          <% } %>
+        </datalist>
+      </fieldset>
+    </div>
+    <div class="column">
+      <hr class="is-hidden-tablet" />
+
+      <fieldset>
+        <legend class="title is-4 is-pulled-left mb-0">Deceased</legend>
+        <label class="button is-small is-pulled-right">
+          <input
+            id="orderForm--deceasedSameAsPurchaser"
+            name="deceasedSameAsPurchaser"
+            type="checkbox"
+            value="true"
+          />
+          <span class="ml-2">Same as Purchaser</span>
+        </label>
+        <br class="mb-5 is-clearfix" />
+
+        <div class="field is-block" style="margin-top:3px">
+          <label class="label" for="orderForm--deceasedName">Deceased Name</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--deceasedName"
+              name="deceasedName"
+              type="text"
+              maxlength="100"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="orderForm--deceasedAddress1">Deceased Address</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--deceasedAddress1"
+              name="deceasedAddress1"
+              type="text"
+              maxlength="100"
+              placeholder="Address Line 1"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="field">
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--deceasedAddress2"
+              name="deceasedAddress2"
+              type="text"
+              maxlength="100"
+              aria-label="Address Line 2"
+              placeholder="Address Line 2"
+            />
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column is-7">
+            <div class="field">
+              <label class="label" for="orderForm--deceasedCity">City</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--deceasedCity"
+                  name="deceasedCity"
+                  type="text"
+                  value="<%= configFunctions.getConfigProperty('features.orderForm.defaultCity') %>"
+                  maxlength="20"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="orderForm--deceasedProvince">Province</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--deceasedProvince"
+                  name="deceasedProvince"
+                  type="text"
+                  value="<%= configFunctions.getConfigProperty('features.orderForm.defaultProvince') %>"
+                  maxlength="2"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="orderForm--deceasedPostalCode">Postal Code</label>
+          <div class="control">
+            <input
+              class="input"
+              id="orderForm--deceasedPostalCode"
+              name="deceasedPostalCode"
+              type="text"
+              minlength="5"
+              maxlength="7"
+              pattern="^[A-Za-z\d \-]+$"
+              required
+            />
+          </div>
+        </div>
+
+        <%
+          const currentDate = new Date().toISOString().split('T')[0]
+        %>
+
+        <div class="columns mb-0">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="orderForm--birthDateString">Date of Birth</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--birthDateString"
+                  name="birthDateString"
+                  type="date"
+                  max="<%= currentDate %>"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="orderForm--birthPlace">Place of Birth</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--birthPlace"
+                  name="birthPlace"
+                  type="text"
+                  maxlength="100"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns mb-0">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="orderForm--deathDateString">Date of Death</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--deathDateString"
+                  name="deathDateString"
+                  type="date"
+                  max="<%= currentDate %>"
+                  disabled
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="orderForm--deathPlace">Place of Death</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--deathPlace"
+                  name="deathPlace"
+                  type="text"
+                  maxlength="100"
+                  disabled
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="orderForm--funeralDateString">Service Date</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--funeralDateString"
+                  name="funeralDateString"
+                  type="date"
+                  min="<%= currentDate %>"
+                  disabled
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="orderForm--funeralTimeString">Service Time</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="orderForm--funeralTimeString"
+                  name="funeralTimeString"
+                  type="time"
+                  step="900"
+                  disabled
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <hr />
+
   <fieldset>
-    <legend class="title is-4">Purchaser</legend>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--intermentContainerTypeId">Container</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select
+                id="orderForm--intermentContainerTypeId"
+                name="intermentContainerTypeId"
+                required
+              >
+                <option value="">(Select a Container)</option>
+                <% for (const containerType of intermentContainerTypes) { %>
+                <option value="<%= containerType.intermentContainerTypeId %>">
+                  <%= containerType.intermentContainerType %>
+                </option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--intermentDepthId">Interment Depth</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select
+                id="orderForm--intermentDepthId"
+                name="intermentDepthId"
+                required
+              >
+                <option value="">(Select an Interment Depth)</option>
+                <% for (const intermentDepth of intermentDepths) { %>
+                <option value="<%= intermentDepth.intermentDepthId %>">
+                  <%= intermentDepth.intermentDepth %>
+                </option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--cemeteryId">Cemetery</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select
+                id="orderForm--cemeteryId"
+                name="cemeteryId"
+                required
+              >
+                <option data-cemetery-key="" value="">(Select a Cemetery)</option>
+                <% for (const cemetery of cemeteries) { %>
+                <option data-cemetery-key="<%= cemetery.cemeteryKey %>" value="<%= cemetery.cemeteryId %>">
+                  <%= cemetery.cemeteryName %>
+                </option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <label class="label" for="orderForm--burialSiteName">Burial Site</label>
+        <div class="field has-addons">
+          <div class="control is-hidden">
+            <span class="button is-static" id="orderForm--burialSiteNamePrefix"></span>
+          </div>
+          <div class="control is-expanded">
+            <input
+              class="input"
+              id="orderForm--burialSiteName"
+              name="burialSiteName"
+              type="text"
+              maxlength="200"
+              required
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--directionOfArrival">Direction of Arrival</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select
+                id="orderForm--directionOfArrival"
+                name="directionOfArrival"
+                disabled
+              >
+                <option value="">(No Set Direction of Arrival)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--committalTypeId">Committal Type</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select
+                id="orderForm--committalTypeId"
+                name="committalTypeId"
+              >
+                <option value="">(No Set Committal Type)</option>
+                <% for (const committalType of committalTypes) { %>
+                <option value="<%= committalType.committalTypeId %>">
+                  <%= committalType.committalType %>
+                </option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <% for (const serviceType of serviceTypes) { %>
+      <div class="column">
+        <div class="field">
+          <label class="label" for="orderForm--serviceTypeId-<%= serviceType.serviceTypeId %>"><%= serviceType.serviceType %></label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select
+                id="orderForm--serviceTypeId-<%= serviceType.serviceTypeId %>"
+                name="serviceTypeId-<%= serviceType.serviceTypeId %>"
+              >
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+    <div class="field">
+      <label class="label" for="orderForm--comment">Remarks</label>
+      <div class="control">
+        <textarea
+          class="textarea"
+          id="orderForm--comment"
+          name="comment"
+        ></textarea>
+      </div>
+    </div>
   </fieldset>
+
+  <p class="has-text-right mt-4">
+    <button class="button is-primary" type="submit">Submit Order Form</button>
+  </p>
 </form>
 
 <%- include('_footerA'); -%>
 
+<script>
+  exports.cemeteries = <%- JSON.stringify(cemeteries) %>;
+</script>
 <script src="<%= urlPrefix %>/javascripts/orderForm.js"></script>
 
 <%- include('_footerB'); -%>

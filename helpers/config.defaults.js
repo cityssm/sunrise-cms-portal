@@ -16,5 +16,7 @@ export const configDefaultValues = {
     'features.orderForm.hasDashboardLink': true,
     'features.orderForm.isEnabled': false,
     'features.orderForm.route': 'orderForm',
+    'features.orderForm.defaultCity': '',
+    'features.orderForm.defaultProvince': '',
 };
 export default configDefaultValues;

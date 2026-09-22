@@ -80,22 +80,24 @@ function initializeCluster(): void {
       activeWorkers.delete(pid)
     }
 
-    if (!isAppShuttingDown) {
-      debug('Starting another worker')
-      const newWorker = cluster.fork()
-
-      const newPid = newWorker.process.pid
-
-      if (newPid === undefined) {
-        debug(
-          'Forked replacement worker without a valid PID; not adding to activeWorkers map'
-        )
-
-        return
-      }
-
-      activeWorkers.set(newPid, newWorker)
+    if (isAppShuttingDown) {
+      return
     }
+
+    debug('Starting another worker')
+    const newWorker = cluster.fork()
+
+    const newPid = newWorker.process.pid
+
+    if (newPid === undefined) {
+      debug(
+        'Forked replacement worker without a valid PID; not adding to activeWorkers map'
+      )
+
+      return
+    }
+
+    activeWorkers.set(newPid, newWorker)
   })
 
   /*

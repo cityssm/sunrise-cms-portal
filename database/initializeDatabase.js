@@ -3,15 +3,22 @@ import Debug from 'debug';
 import { DEBUG_NAMESPACE } from '../debug.config.js';
 import { sunriseDB as databasePath } from '../helpers/database.helpers.js';
 const debug = Debug(`${DEBUG_NAMESPACE}:database:initializeDatabase`);
-const recordColumns = `
-  recordCreate_username VARCHAR(30) NOT NULL,
-  recordCreate_timeMillis INTEGER NOT NULL,
-  recordUpdate_username VARCHAR(30) NOT NULL,
-  recordUpdate_timeMillis INTEGER NOT NULL,
-  recordDelete_username VARCHAR(30),
-  recordDelete_timeMillis INTEGER
-`;
-const sqlCreateStatements = [];
+const sqlCreateStatements = [
+    `
+    CREATE TABLE IF NOT EXISTS OrderForms (
+      orderFormId INTEGER PRIMARY KEY AUTOINCREMENT,
+      orderFormKey CHAR(10) NOT NULL UNIQUE,
+      orderFormData TEXT NOT NULL,
+      recordCreate_ipAddress VARCHAR(45) NOT NULL,
+      recordCreate_timeMillis INTEGER NOT NULL,
+      recordProcess_username VARCHAR(30),
+      recordProcess_timeMillis INTEGER,
+      recordProcess_contractId INTEGER,
+      recordDelete_username VARCHAR(30),
+      recordDelete_timeMillis INTEGER
+    )
+  `
+];
 export function initializeDatabase(connectedDatabase) {
     const sunriseDB = connectedDatabase ?? sqlite(databasePath);
     sunriseDB.pragma('journal_mode = WAL');
@@ -23,7 +30,7 @@ export function initializeDatabase(connectedDatabase) {
         sqlite_master
       WHERE
         type = 'table'
-        AND name = 'AuditLog'
+        AND name = 'OrderForms'
     `)
         .get();
     if (row !== undefined) {

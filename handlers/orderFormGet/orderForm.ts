@@ -1,3 +1,4 @@
+import { relationships } from '@cityssm/cemetery-utils'
 import type { Request, Response } from 'express'
 
 import DataCache from '../../helpers/dataCache.js'
@@ -10,6 +11,7 @@ export default function handler(request: Request, response: Response): void {
   response.render('orderForm', {
     headTitle: 'Order Form',
 
-    ...data
+    ...data,
+    relationships
   })
 }

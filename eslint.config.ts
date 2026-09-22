@@ -1,10 +1,5 @@
 import configWebApp, { defineConfig } from 'eslint-config-cityssm'
 
-const escapedMethods = [
-  'cityssm.dateToString',
-  'cityssm.escapeHTML'
-]
-
 export const config = defineConfig(
   configWebApp,
   {
@@ -15,13 +10,7 @@ export const config = defineConfig(
       }
     },
     rules: {
-      '@typescript-eslint/no-unsafe-type-assertion': 'off',
-
-      'browser-security/no-innerhtml': [
-        'error', {
-          trustedSanitizers: escapedMethods
-        }
-      ]
+      '@typescript-eslint/no-unsafe-type-assertion': 'off'
     }
   },
   {

@@ -8,7 +8,7 @@ import createError, { type HttpError } from 'http-errors'
 import type { ApiFailureResponse } from 'sunrise-cms-shared'
 
 import { DEBUG_NAMESPACE, PROCESS_ID_MAX_DIGITS } from '../debug.config.js'
-import * as configFunctions from '../helpers/config.helpers.js'
+import configFunctions from '../helpers/config.helpers.js'
 
 import routerApi from './apiRouter.js'
 

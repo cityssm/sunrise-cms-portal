@@ -46,6 +46,9 @@ export interface Config {
       hasDashboardLink?: boolean
 
       route?: string
+
+      defaultCity?: string
+      defaultProvince?: string
     }
   }
 }

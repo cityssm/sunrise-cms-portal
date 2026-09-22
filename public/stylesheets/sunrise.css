@@ -61,20 +61,6 @@
 }
 
 /*
- * Login page
- */
-
-#is-login-page {
-  overflow: auto;
-  background-position: bottom center;
-  background-size: cover;
-}
-
-#is-login-page body > .columns {
-  min-height: 100vh;
-}
-
-/*
  * Print
  */
 
@@ -92,18 +78,6 @@
     padding: 0;
     border: 0;
   }
-}
-
-/*
- * z-index to compensate for leaflet
- */
-
-.navbar.is-fixed-top {
-  z-index: 1100;
-}
-
-.modal {
-  z-index: 1200;
 }
 
 /*
@@ -268,42 +242,6 @@ span.button.is-static {
 }
 
 /*
- * Milestone Calendar
- */
-
-#container--milestoneCalendar:has(.container--workOrder:hover)
-  .container--workOrder {
-  opacity: 0.4;
-}
-
-#container--milestoneCalendar .container--workOrder:hover {
-  opacity: 1 !important;
-}
-
-/* Open Work Orders with All Completed Milestones */
-#container--milestoneCalendar
-  .container--workOrder[data-is-complete='0']:not(
-    :has(> .container--workOrderMilestone[data-is-complete='0'])
-  ) {
-  background-color: var(--bulma-warning-light);
-}
-
-/* Fix hover effect when hovering on a label */
-.control.has-icons-left .select:has(select:hover) ~ .icon,
-.control.has-icons-right .select:has(select:hover) ~ .icon {
-  color: var(--bulma-input-icon-hover-color);
-}
-
-/*
- * Leaflet
- */
-
-.leaflet-control-attribution a {
-  color: var(--bulma-link-text) !important;
-  text-decoration: underline !important;
-}
-
-/*
  * Bulma - Font Awesome integration
  * Reduce jitter when icons are loading by reserving space for them.
  */
@@ -329,4 +267,13 @@ span.button.is-static {
   font-size: 4em;
   width: 1.25em;
   height: 1em;
+}
+
+/*
+ * Burial site field with hidden first control
+ */
+
+.field .control:first-child.is-hidden + .control .input {
+  border-end-start-radius: var(--bulma-input-radius);
+  border-start-start-radius: var(--bulma-input-radius);
 }
