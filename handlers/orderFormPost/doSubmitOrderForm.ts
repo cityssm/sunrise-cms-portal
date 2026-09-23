@@ -5,6 +5,8 @@ import type { Request, Response } from 'express'
 import saveOrderForm from '../../database/saveOrderForm.js'
 
 const allowedFields = new Set<string>([
+  'submitterName',
+  'submitterEmail',
   'contractTypeId',
   'contractTypeIdText',
 

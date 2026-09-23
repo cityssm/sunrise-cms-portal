@@ -1,5 +1,7 @@
 import saveOrderForm from '../../database/saveOrderForm.js';
 const allowedFields = new Set([
+    'submitterName',
+    'submitterEmail',
     'contractTypeId',
     'contractTypeIdText',
     'funeralHomeId',

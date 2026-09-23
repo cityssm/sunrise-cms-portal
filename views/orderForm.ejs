@@ -4,10 +4,47 @@
   Order Form
 </h1>
 
-<form id="form--orderForm" data-action="<%= configFunctions.getConfigProperty('reverseProxy.urlPrefix') %>/<%= configFunctions.getConfigProperty('features.orderForm.route') %>/doSubmitOrderForm">
+<% const formAction = configFunctions.getConfigProperty('reverseProxy.urlPrefix') + '/' + configFunctions.getConfigProperty('features.orderForm.route') + '/doSubmitOrderForm'; %>
+
+<form id="form--orderForm" data-action="<%= formAction %>">
+  <div class="columns mb-0">
+    <div class="column">
+      <label class="label" for="orderForm--submitterName">Submitter Name</label>
+      <div class="control has-icons-right">
+        <input
+          class="input"
+          id="orderForm--submitterName"
+          name="submitterName"
+          type="text"
+          maxlength="100"
+          required
+        />
+        <span class="icon is-small is-right">
+          <i class="fas fa-asterisk"></i>
+        </span>
+      </div>
+    </div>
+    <div class="column">
+      <label class="label" for="orderForm--submitterEmail">Submitter Email</label>
+      <div class="control has-icons-right">
+        <input
+          class="input"
+          id="orderForm--submitterEmail"
+          name="submitterEmail"
+          type="email"
+          maxlength="100"
+          required
+        />
+        <span class="icon is-small is-right">
+          <i class="fas fa-asterisk"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+
   <div class="field">
     <label class="label" for="orderForm--contractTypeId">Contract Type</label>
-    <div class="control">
+    <div class="control has-icons-right">
       <div class="select is-fullwidth">
         <select id="orderForm--contractTypeId" name="contractTypeId" required>
           <option data-is-preneed="true" value="">(Select a Contract Type)</option>
@@ -20,6 +57,9 @@
           </option>
           <% } %>
         </select>
+        <span class="icon is-small is-right">
+          <i class="fas fa-asterisk"></i>
+        </span>
       </div>
     </div>
   </div>
@@ -64,7 +104,7 @@
 
     <div class="field">
       <label class="label" for="orderForm--funeralHomeName">Funeral Home Name</label>
-      <div class="control">
+      <div class="control has-icons-right">
         <input
           class="input"
           id="orderForm--funeralHomeName"
@@ -74,12 +114,15 @@
           disabled
           required
         />
+        <span class="icon is-small is-right">
+          <i class="fas fa-asterisk"></i>
+        </span>
       </div>
     </div>
 
     <label class="label" for="orderForm--funeralHomeAddress1">Funeral Home Address</label>
     <div class="field">
-      <div class="control">
+      <div class="control has-icons-right">
         <input
           class="input"
           id="orderForm--funeralHomeAddress1"
@@ -90,6 +133,9 @@
           disabled
           required
         />
+        <span class="icon is-small is-right">
+          <i class="fas fa-asterisk"></i>
+        </span>
       </div>
     </div>
     <div class="field">
@@ -107,11 +153,11 @@
       </div>
     </div>
 
-    <div class="columns">
+    <div class="columns mb-0">
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--funeralHomeCity">City</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--funeralHomeCity"
@@ -121,13 +167,16 @@
               disabled
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
       </div>
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--funeralHomeProvince">Province</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--funeralHomeProvince"
@@ -137,13 +186,16 @@
               disabled
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
       </div>
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--funeralHomePostalCode">Postal Code</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--funeralHomePostalCode"
@@ -155,6 +207,9 @@
               pattern="^[A-Za-z\d \-]+$"
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
       </div>
@@ -164,7 +219,7 @@
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--funeralHomePhoneNumber">Phone Number</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--funeralHomePhoneNumber"
@@ -174,13 +229,16 @@
               disabled
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
       </div>
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--funeralDirectorName">Funeral Director</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--funeralDirectorName"
@@ -190,6 +248,9 @@
               disabled
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
       </div>
@@ -200,14 +261,14 @@
 
   <hr />
 
-  <div class="columns">
+  <div class="columns is-desktop mb-0">
     <div class="column">
       <fieldset>
         <legend class="title is-4">Purchaser</legend>
     
         <div class="field">
           <label class="label" for="orderForm--purchaserName">Purchaser Name</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--purchaserName"
@@ -216,12 +277,15 @@
               maxlength="100"
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
     
         <div class="field">
           <label class="label" for="orderForm--purchaserAddress1">Purchaser Address</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--purchaserAddress1"
@@ -231,6 +295,9 @@
               placeholder="Address Line 1"
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
         
@@ -248,11 +315,11 @@
           </div>
         </div>
     
-        <div class="columns">
+        <div class="columns mb-0">
           <div class="column is-7">
             <div class="field">
               <label class="label" for="orderForm--purchaserCity">City</label>
-              <div class="control">
+              <div class="control has-icons-right">
                 <input
                   class="input"
                   id="orderForm--purchaserCity"
@@ -262,13 +329,16 @@
                   maxlength="50"
                   required
                 />
+                <span class="icon is-small is-right">
+                  <i class="fas fa-asterisk"></i>
+                </span>
               </div>
             </div>
           </div>
           <div class="column">
             <div class="field">
               <label class="label" for="orderForm--purchaserProvince">Province</label>
-              <div class="control">
+              <div class="control has-icons-right">
                 <input
                   class="input"
                   id="orderForm--purchaserProvince"
@@ -278,6 +348,9 @@
                   maxlength="2"
                   required
                 />
+                <span class="icon is-small is-right">
+                  <i class="fas fa-asterisk"></i>
+                </span>
               </div>
             </div>
           </div>
@@ -285,7 +358,7 @@
 
         <div class="field">
           <label class="label" for="orderForm--purchaserPostalCode">Postal Code</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--purchaserPostalCode"
@@ -296,6 +369,9 @@
               pattern="^[A-Za-z\d \-]+$"
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
     
@@ -369,7 +445,7 @@
 
         <div class="field is-block" style="margin-top:3px">
           <label class="label" for="orderForm--deceasedName">Deceased Name</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--deceasedName"
@@ -378,12 +454,15 @@
               maxlength="100"
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
 
         <div class="field">
           <label class="label" for="orderForm--deceasedAddress1">Deceased Address</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--deceasedAddress1"
@@ -393,6 +472,9 @@
               placeholder="Address Line 1"
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
         
@@ -410,11 +492,11 @@
           </div>
         </div>
 
-        <div class="columns">
+        <div class="columns mb-0">
           <div class="column is-7">
             <div class="field">
               <label class="label" for="orderForm--deceasedCity">City</label>
-              <div class="control">
+              <div class="control has-icons-right">
                 <input
                   class="input"
                   id="orderForm--deceasedCity"
@@ -424,13 +506,16 @@
                   maxlength="20"
                   required
                 />
+                <span class="icon is-small is-right">
+                  <i class="fas fa-asterisk"></i>
+                </span>
               </div>
             </div>
           </div>
           <div class="column">
             <div class="field">
               <label class="label" for="orderForm--deceasedProvince">Province</label>
-              <div class="control">
+              <div class="control has-icons-right">
                 <input
                   class="input"
                   id="orderForm--deceasedProvince"
@@ -440,6 +525,9 @@
                   maxlength="2"
                   required
                 />
+                <span class="icon is-small is-right">
+                  <i class="fas fa-asterisk"></i>
+                </span>
               </div>
             </div>
           </div>
@@ -447,7 +535,7 @@
 
         <div class="field">
           <label class="label" for="orderForm--deceasedPostalCode">Postal Code</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input
               class="input"
               id="orderForm--deceasedPostalCode"
@@ -458,6 +546,9 @@
               pattern="^[A-Za-z\d \-]+$"
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
 
@@ -467,7 +558,7 @@
           <div class="column">
             <div class="field">
               <label class="label" for="orderForm--birthDateString">Date of Birth</label>
-              <div class="control">
+              <div class="control has-icons-right">
                 <input
                   class="input"
                   id="orderForm--birthDateString"
@@ -476,6 +567,9 @@
                   max="<%= currentDate %>"
                   required
                 />
+                <span class="icon is-small is-right">
+                  <i class="fas fa-asterisk"></i>
+                </span>
               </div>
             </div>
           </div>
@@ -499,7 +593,7 @@
           <div class="column">
             <div class="field">
               <label class="label" for="orderForm--deathDateString">Date of Death</label>
-              <div class="control">
+              <div class="control has-icons-right">
                 <input
                   class="input"
                   id="orderForm--deathDateString"
@@ -509,13 +603,16 @@
                   disabled
                   required
                 />
+                <span class="icon is-small is-right">
+                  <i class="fas fa-asterisk"></i>
+                </span>
               </div>
             </div>
           </div>
           <div class="column">
             <div class="field">
               <label class="label" for="orderForm--deathPlace">Place of Death</label>
-              <div class="control">
+              <div class="control has-icons-right">
                 <input
                   class="input"
                   id="orderForm--deathPlace"
@@ -525,16 +622,19 @@
                   disabled
                   required
                 />
+                <span class="icon is-small is-right">
+                  <i class="fas fa-asterisk"></i>
+                </span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="columns">
+        <div class="columns mb-0">
           <div class="column">
             <div class="field">
               <label class="label" for="orderForm--funeralDateString">Service Date</label>
-              <div class="control">
+              <div class="control has-icons-right">
                 <input
                   class="input"
                   id="orderForm--funeralDateString"
@@ -544,13 +644,16 @@
                   disabled
                   required
                 />
+                <span class="icon is-small is-right">
+                  <i class="fas fa-asterisk"></i>
+                </span>
               </div>
             </div>
           </div>
           <div class="column">
             <div class="field">
               <label class="label" for="orderForm--funeralTimeString">Service Time</label>
-              <div class="control">
+              <div class="control has-icons-right">
                 <input
                   class="input"
                   id="orderForm--funeralTimeString"
@@ -560,6 +663,9 @@
                   disabled
                   required
                 />
+                <span class="icon is-small is-right">
+                  <i class="fas fa-asterisk"></i>
+                </span>
               </div>
             </div>
           </div>
@@ -571,11 +677,13 @@
   <hr />
 
   <fieldset>
-    <div class="columns">
+    <% if (intermentContainerTypes.length > 0 || intermentDepths.length > 0) { %>
+    <div class="columns mb-0">
+      <% if (intermentContainerTypes.length > 0) { %>
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--intermentContainerTypeId">Container</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <div class="select is-fullwidth">
               <select
                 id="orderForm--intermentContainerTypeId"
@@ -590,13 +698,18 @@
                 <% } %>
               </select>
             </div>
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
       </div>
+      <% } %>
+      <% if (intermentDepths.length > 0) { %>
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--intermentDepthId">Interment Depth</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <div class="select is-fullwidth">
               <select
                 id="orderForm--intermentDepthId"
@@ -611,17 +724,21 @@
                 <% } %>
               </select>
             </div>
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
       </div>
-      
+      <% } %>
     </div>
+    <% } %>
 
-    <div class="columns">
+    <div class="columns mb-0">
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--cemeteryId">Cemetery</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <div class="select is-fullwidth">
               <select
                 id="orderForm--cemeteryId"
@@ -636,6 +753,9 @@
                 <% } %>
               </select>
             </div>
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
       </div>
@@ -645,7 +765,7 @@
           <div class="control is-hidden">
             <span class="button is-static" id="orderForm--burialSiteNamePrefix"></span>
           </div>
-          <div class="control is-expanded">
+          <div class="control has-icons-right is-expanded">
             <input
               class="input"
               id="orderForm--burialSiteName"
@@ -654,12 +774,15 @@
               maxlength="200"
               required
             />
+            <span class="icon is-small is-right">
+              <i class="fas fa-asterisk"></i>
+            </span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="columns">
+    <div class="columns mb-0">
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--directionOfArrival">Direction of Arrival</label>
@@ -676,6 +799,7 @@
           </div>
         </div>
       </div>
+      <% if (committalTypes.length > 0) { %>
       <div class="column">
         <div class="field">
           <label class="label" for="orderForm--committalTypeId">Committal Type</label>
@@ -696,9 +820,11 @@
           </div>
         </div>
       </div>
+      <% } %>
     </div>
 
-    <div class="columns">
+    <% if (serviceTypes.length > 0) { %>
+    <div class="columns mb-0">
       <% for (const serviceType of serviceTypes) { %>
       <div class="column">
         <div class="field">
@@ -718,6 +844,7 @@
       </div>
       <% } %>
     </div>
+    <% } %>
 
     <div class="field">
       <label class="label" for="orderForm--comment">Remarks</label>

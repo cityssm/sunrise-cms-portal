@@ -11,24 +11,8 @@
 
 /* to fix page titles inside level components, set on .level-left */
 
-.has-flex-shrink-1 {
-  flex-shrink: 1;
-}
-
 .has-border-radius-3 {
   border-radius: 3px;
-}
-
-/*
- * Modals
- */
-
-.modal-card {
-  max-width: 100%;
-}
-
-.modal-card.has-width-900 {
-  width: 900px;
 }
 
 /*
@@ -90,63 +74,6 @@ span.button.is-static {
 }
 
 /*
- * Fixed Level
- */
-
-.columns.is-fixed-bottom,
-.level.is-fixed-bottom {
-  z-index: 1100;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-}
-
-.level.is-fixed-bottom {
-  padding: 15px;
-}
-
-.columns.is-fixed-bottom.has-shadow,
-.level.is-fixed-bottom.has-shadow {
-  box-shadow: 0 -2px 0 0 #f5f5f5;
-}
-
-/*
- * Fixed bottom
- */
-
-@media screen {
-  .fixed-container {
-    position: fixed;
-    z-index: 30;
-    display: inline-block;
-  }
-
-  .fixed-container.is-fixed-bottom-right {
-    right: 0;
-    bottom: 0;
-  }
-
-  .fixed-container.is-fixed-bottom {
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-}
-
-/*
- * Circle Button
- */
-
-.button.is-circle {
-  width: 2.2em;
-  height: 2.2em;
-  font-size: 2em;
-  border-radius: 50%;
-}
-
-/*
  * Modal right-justified button spacing
  */
 
@@ -191,6 +118,18 @@ span.button.is-static {
 }
 
 .select option:disabled {
+  display: none;
+}
+
+/*
+ * Required icons
+ */
+
+.control.has-icons-right:has(.select) .icon.is-right {
+  right: 1.75em;
+}
+
+.control.has-icons-right input:disabled:required ~ .icon.is-right:has(.fa-asterisk) {
   display: none;
 }
 
