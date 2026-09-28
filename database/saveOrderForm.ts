@@ -1,6 +1,5 @@
 import crypto from 'node:crypto'
-
-import sqlite from 'better-sqlite3'
+import { DatabaseSync } from 'node:sqlite'
 
 import { sunriseDB as databasePath } from '../helpers/database.helpers.js'
 
@@ -11,14 +10,14 @@ function generateOrderFormKey(): string {
     currentDate.getMonth() + 1
   )
     .toString()
-    .padStart(2, '0')}${crypto.randomUUID().slice(0, 6)}`
+    .padStart(2, '0')}${crypto.randomUUID().slice(0, 6).toUpperCase()}`
 }
 
 export default function saveOrderForm(
   orderFormData: Record<string, string>,
   requestIp: string
 ): string {
-  const database = sqlite(databasePath)
+  const database = new DatabaseSync(databasePath)
 
   let orderFormKey = generateOrderFormKey()
 

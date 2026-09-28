@@ -1,4 +1,5 @@
-import sqlite from 'better-sqlite3'
+import { DatabaseSync } from 'node:sqlite'
+
 import Debug from 'debug'
 
 import { DEBUG_NAMESPACE } from '../debug.config.js'
@@ -24,12 +25,10 @@ const sqlCreateStatements = [
 ]
 
 // eslint-disable-next-line unicorn/consistent-boolean-name
-export function initializeDatabase(
-  connectedDatabase?: sqlite.Database
-): boolean {
-  const sunriseDB = connectedDatabase ?? sqlite(databasePath)
+export function initializeDatabase(connectedDatabase?: DatabaseSync): boolean {
+  const sunriseDB = connectedDatabase ?? new DatabaseSync(databasePath)
 
-  sunriseDB.pragma('journal_mode = WAL')
+  sunriseDB.exec('PRAGMA journal_mode = WAL')
 
   const row = sunriseDB
     .prepare(/* sql */ `

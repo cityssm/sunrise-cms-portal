@@ -20,17 +20,16 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./index.js",
-    "start": "node ./index.js"
+    "dev": "node --env-file=.dev.env --watch ./index.js",
+    "start": "node --env-file=.env ./index.js"
   },
   "dependencies": {
     "@cityssm/bulma-js": "^1.0.0-rc.4",
     "@cityssm/cemetery-utils": "^0.3.0",
     "@cityssm/configurator": "^0.2.0",
-    "@cityssm/express-abuse-points": "^3.3.0",
+    "@cityssm/express-abuse-points": "^4.0.0",
     "@cityssm/utils-datetime": "^1.4.0",
     "@fortawesome/fontawesome-free": "^7.3.1",
-    "better-sqlite3": "^13.0.3",
     "bulma": "^1.0.4",
     "chokidar": "^5.0.0",
     "compression": "^1.8.2",
@@ -42,13 +41,11 @@
     "sunrise-cms-shared": "^0.0.6"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^9.6.0",
     "@types/compression": "^1.8.1",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
-    "@types/node": "^26.6.2",
-    "eslint-config-cityssm": "^54.0.0",
-    "nodemon": "^3.1.14",
+    "@types/node": "^26.6.3",
+    "eslint-config-cityssm": "^54.1.0",
     "prettier-config-cityssm": "^2.2.0"
   },
   "optionalDependencies": {
