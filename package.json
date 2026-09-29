@@ -38,20 +38,21 @@
     "express": "^5.2.1",
     "express-rate-limit": "^8.7.0",
     "http-errors": "^2.0.1",
-    "sunrise-cms-shared": "^0.0.6"
+    "sunrise-cms-shared": "^0.0.8"
   },
   "devDependencies": {
     "@types/compression": "^1.8.1",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.3",
-    "eslint-config-cityssm": "^54.1.0",
+    "@types/node-windows": "^0.1.6",
+    "eslint-config-cityssm": "^55.0.0",
     "prettier-config-cityssm": "^2.2.0"
   },
   "optionalDependencies": {
     "node-windows": "^1.0.0-beta.8"
   },
-  "allowScripts": {
-    "better-sqlite3@13.0.3": true
+  "engines": {
+    "node": ">=22"
   }
 }

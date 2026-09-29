@@ -1,21 +1,40 @@
 import { Router } from 'express'
-import { type ApiSuccessResponse, doDataSyncEndpoint } from 'sunrise-cms-shared'
+import {
+  type ApiSuccessResponse,
+  doDataSyncEndpoint,
+  doDeleteOrderFormEndpoint,
+  doGetUnprocessedOrderFormsEndpoint,
+  doMarkOrderFormAsProcessedEndpoint
+} from 'sunrise-cms-shared'
 
 import doDataSyncHandler from './handlers/doDataSync.js'
+import doDeleteOrderFormHandler from './handlers/doDeleteOrderForm.js'
+import doGetUnprocessedOrderFormsHandler from './handlers/doGetUnprocessedOrderForms.js'
+import doMarkOrderFormAsProcessedHandler from './handlers/doMarkOrderFormAsProcessed.js'
 
-export default function getDashboardRouter(): Router {
+export default function getApiRouter(): Router {
   const router = Router()
 
-  router.get('/', (request, response) => {
-    response.send({
-      success: true,
+  router
+    .get('/', (request, response) => {
+      response.send({
+        success: true,
 
-      ip: request.ip ?? '',
+        ip: request.ip ?? '',
 
-      data: undefined
-    } satisfies ApiSuccessResponse<undefined>)
-  })
-  .post(`/${doDataSyncEndpoint}`, doDataSyncHandler)
+        data: undefined
+      } satisfies ApiSuccessResponse<undefined>)
+    })
+    .post(`/${doDataSyncEndpoint}`, doDataSyncHandler)
+    .post(
+      `/${doGetUnprocessedOrderFormsEndpoint}`,
+      doGetUnprocessedOrderFormsHandler
+    )
+    .post(
+      `/${doMarkOrderFormAsProcessedEndpoint}`,
+      doMarkOrderFormAsProcessedHandler
+    )
+    .post(`/${doDeleteOrderFormEndpoint}`, doDeleteOrderFormHandler)
 
   return router
 }

@@ -83,6 +83,7 @@ export default function getApp(): express.Express {
 
       const forbiddenResponse: ApiFailureResponse = {
         success: false,
+
         error: 'Forbidden',
         ip: requestIp ?? ''
       }
@@ -122,6 +123,7 @@ export default function getApp(): express.Express {
     ) => {
       const errorResponse: ApiFailureResponse = {
         success: false,
+
         error: error.message ?? 'An unknown error occurred',
         ip: _request.ip ?? ''
       }

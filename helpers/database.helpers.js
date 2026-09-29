@@ -1,1 +1,1 @@
-export const sunriseDB = 'data/sunrisePortal.db';
+export const databasePath = 'data/sunrisePortal.db';

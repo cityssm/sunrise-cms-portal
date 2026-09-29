@@ -1,7 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
 import Debug from 'debug';
 import { DEBUG_NAMESPACE } from '../debug.config.js';
-import { sunriseDB as databasePath } from '../helpers/database.helpers.js';
+import { databasePath } from '../helpers/database.helpers.js';
 const debug = Debug(`${DEBUG_NAMESPACE}:database:initializeDatabase`);
 const sqlCreateStatements = [
     `

@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 import { DatabaseSync } from 'node:sqlite';
-import { sunriseDB as databasePath } from '../helpers/database.helpers.js';
+import { databasePath } from '../helpers/database.helpers.js';
 function generateOrderFormKey() {
     const currentDate = new Date();
     return `${currentDate.getFullYear().toString().slice(-2)}${(currentDate.getMonth() + 1)

@@ -1,7 +1,7 @@
 import crypto from 'node:crypto'
 import { DatabaseSync } from 'node:sqlite'
 
-import { sunriseDB as databasePath } from '../helpers/database.helpers.js'
+import { databasePath } from '../helpers/database.helpers.js'
 
 function generateOrderFormKey(): string {
   const currentDate = new Date()

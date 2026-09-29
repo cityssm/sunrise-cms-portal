@@ -13,8 +13,8 @@ export default function doDataSyncHandler(request, response) {
     catch {
         response.status(500).send({
             success: false,
+            ip: request.ip ?? '',
             error: 'Failed to write data',
-            ip: request.ip ?? ''
         });
     }
 }
