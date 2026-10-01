@@ -1,21 +1,20 @@
 import { DatabaseSync } from 'node:sqlite';
 import { databasePath } from '../helpers/database.helpers.js';
-export default function markOrderFormAsProcessed(orderFormId, contractId, username) {
+export default function markOrderFormAsSynced(orderFormId, username) {
     const database = new DatabaseSync(databasePath);
     const rightNowMillis = Date.now();
     const result = database
         .prepare(`
       UPDATE OrderForms
       SET
-        recordProcess_username = ?,
-        recordProcess_timeMillis = ?,
-        recordProcess_contractId = ?
+        recordSync_username = ?,
+        recordSync_timeMillis = ?
       WHERE
         orderFormId = ?
-        AND recordProcess_timeMillis IS NULL
+        AND recordSync_timeMillis IS NULL
         AND recordDelete_timeMillis IS NULL
     `)
-        .run(username, rightNowMillis, (contractId ?? '') === '' ? null : (contractId ?? ''), orderFormId);
+        .run(username, rightNowMillis, orderFormId);
     database.close();
     return result.changes > 0 ? rightNowMillis : undefined;
 }

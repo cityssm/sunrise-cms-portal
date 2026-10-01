@@ -4,13 +4,13 @@ import {
   doDataSyncEndpoint,
   doDeleteOrderFormEndpoint,
   doGetUnprocessedOrderFormsEndpoint,
-  doMarkOrderFormAsProcessedEndpoint
+  doMarkOrderFormAsSyncedEndpoint
 } from 'sunrise-cms-shared'
 
 import doDataSyncHandler from './handlers/doDataSync.js'
 import doDeleteOrderFormHandler from './handlers/doDeleteOrderForm.js'
 import doGetUnprocessedOrderFormsHandler from './handlers/doGetUnprocessedOrderForms.js'
-import doMarkOrderFormAsProcessedHandler from './handlers/doMarkOrderFormAsProcessed.js'
+import doMarkOrderFormAsSyncedHandler from './handlers/doMarkOrderFormAsSynced.js'
 
 export default function getApiRouter(): Router {
   const router = Router()
@@ -31,8 +31,8 @@ export default function getApiRouter(): Router {
       doGetUnprocessedOrderFormsHandler
     )
     .post(
-      `/${doMarkOrderFormAsProcessedEndpoint}`,
-      doMarkOrderFormAsProcessedHandler
+      `/${doMarkOrderFormAsSyncedEndpoint}`,
+      doMarkOrderFormAsSyncedHandler
     )
     .post(`/${doDeleteOrderFormEndpoint}`, doDeleteOrderFormHandler)
 

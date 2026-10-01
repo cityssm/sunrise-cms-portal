@@ -18,7 +18,7 @@ export default function getUnprocessedOrderForms(): UnprocessedOrderForm[] {
       FROM
         OrderForms
       WHERE
-        recordProcess_timeMillis IS NULL
+        recordSync_timeMillis IS NULL
         AND recordDelete_timeMillis IS NULL
     `)
     .all() as unknown as Array<

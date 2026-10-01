@@ -1,7 +1,7 @@
-import markOrderFormAsProcessed from '../../database/markOrderFormAsProcessed.js';
-export default function doMarkOrderFormAsProcessed(request, response) {
-    const { contractId, orderFormId, username } = request.body;
-    const result = markOrderFormAsProcessed(orderFormId, contractId, username);
+import markOrderFormAsSynced from '../../database/markOrderFormAsSynced.js';
+export default function doMarkOrderFormAsSynced(request, response) {
+    const { orderFormId, username } = request.body;
+    const result = markOrderFormAsSynced(orderFormId, username);
     if (result === undefined) {
         response.status(500).send({
             success: false,
@@ -14,7 +14,7 @@ export default function doMarkOrderFormAsProcessed(request, response) {
         success: true,
         ip: request.ip ?? '',
         data: {
-            recordUpdate_timeMillis: result
+            recordSync_timeMillis: result
         }
     });
 }

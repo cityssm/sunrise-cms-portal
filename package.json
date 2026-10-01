@@ -38,7 +38,7 @@
     "express": "^5.2.1",
     "express-rate-limit": "^8.7.0",
     "http-errors": "^2.0.1",
-    "sunrise-cms-shared": "^0.0.8"
+    "sunrise-cms-shared": "^0.0.9"
   },
   "devDependencies": {
     "@types/compression": "^1.8.1",
@@ -46,7 +46,7 @@
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.3",
     "@types/node-windows": "^0.1.6",
-    "eslint-config-cityssm": "^55.0.0",
+    "eslint-config-cityssm": "^55.2.2",
     "prettier-config-cityssm": "^2.2.0"
   },
   "optionalDependencies": {
