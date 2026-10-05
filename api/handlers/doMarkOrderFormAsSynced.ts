@@ -15,9 +15,9 @@ export default function doMarkOrderFormAsSynced(
   >,
   response: Response<ApiResponse<DoMarkOrderFormAsSyncedResponseData>>
 ): void {
-  const { orderFormId, username } = request.body
+  const { orderFormId } = request.body
 
-  const result = markOrderFormAsSynced(orderFormId, username)
+  const result = markOrderFormAsSynced(orderFormId)
 
   if (result === undefined) {
     response.status(500).send({

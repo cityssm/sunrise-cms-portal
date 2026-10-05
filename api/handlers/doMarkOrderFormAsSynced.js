@@ -1,7 +1,7 @@
 import markOrderFormAsSynced from '../../database/markOrderFormAsSynced.js';
 export default function doMarkOrderFormAsSynced(request, response) {
-    const { orderFormId, username } = request.body;
-    const result = markOrderFormAsSynced(orderFormId, username);
+    const { orderFormId } = request.body;
+    const result = markOrderFormAsSynced(orderFormId);
     if (result === undefined) {
         response.status(500).send({
             success: false,

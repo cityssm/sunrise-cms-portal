@@ -15,7 +15,6 @@ const sqlCreateStatements = [
       orderFormData TEXT NOT NULL,
       recordCreate_ipAddress VARCHAR(45) NOT NULL,
       recordCreate_timeMillis INTEGER NOT NULL,
-      recordSync_username VARCHAR(30),
       recordSync_timeMillis INTEGER,
       recordDelete_username VARCHAR(30),
       recordDelete_timeMillis INTEGER

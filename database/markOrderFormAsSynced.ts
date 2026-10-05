@@ -3,8 +3,7 @@ import { DatabaseSync } from 'node:sqlite'
 import { databasePath } from '../helpers/database.helpers.js'
 
 export default function markOrderFormAsSynced(
-  orderFormId: number | string,
-  username: string
+  orderFormId: number | string
 ): number | undefined {
   const database = new DatabaseSync(databasePath)
 
@@ -14,18 +13,13 @@ export default function markOrderFormAsSynced(
     .prepare(/* sql */ `
       UPDATE OrderForms
       SET
-        recordSync_username = ?,
         recordSync_timeMillis = ?
       WHERE
         orderFormId = ?
         AND recordSync_timeMillis IS NULL
         AND recordDelete_timeMillis IS NULL
     `)
-    .run(
-      username,
-      rightNowMillis,
-      orderFormId
-    )
+    .run(rightNowMillis, orderFormId)
 
   database.close()
 
