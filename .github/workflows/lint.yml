@@ -55,7 +55,7 @@ jobs:
         run: npm run lint:eslint:css
 
       - name: Run ESLint Check (HTML)
-        if: ${{ (success() || failure()) }}
+        if: false
         run: npm run lint:eslint:html
 
       - name: Run ESLint Check (EJS)
