@@ -20,7 +20,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec \"node --env-file=.dev.env ./index.js\"",
+    "dev": "nodemon --env-file=.dev.env ./index.js",
     "lint:cspell": "cspell lint \"**/*.{ts,ejs,css,html,md}\"",
     "lint:editorconfig": "editorconfig-checker",
     "lint:eslint:css": "eslint **/*.css",
