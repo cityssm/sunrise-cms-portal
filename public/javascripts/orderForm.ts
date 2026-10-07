@@ -1,5 +1,3 @@
-/* eslint-disable runtime-cleanup/no-unmanaged-event-listeners */
-
 import type { BulmaJS } from '@cityssm/bulma-js/types.js'
 import type { PortalCemetery } from 'sunrise-cms-shared'
 

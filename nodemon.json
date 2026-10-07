@@ -2,7 +2,13 @@
   "events": {
     "start": "cls || clear"
   },
-  "ignore": ["cspell.json", "cypress/*", "data/data.json", "data/sessions/*", "public/javascripts/*"],
+  "ignore": [
+    "cspell.json",
+    "cypress/*",
+    "data/data.json",
+    "data/sessions/*",
+    "public/javascripts/*"
+  ],
   "env": {
     "NODE_ENV": "development"
   }

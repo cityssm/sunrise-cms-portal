@@ -6,11 +6,15 @@ import { databasePath } from '../helpers/database.helpers.js'
 function generateOrderFormKey(): string {
   const currentDate = new Date()
 
+  /* eslint-disable @typescript-eslint/no-magic-numbers */
+
   return `${currentDate.getFullYear().toString().slice(-2)}${(
     currentDate.getMonth() + 1
   )
     .toString()
     .padStart(2, '0')}${crypto.randomUUID().slice(0, 6).toUpperCase()}`
+
+  /* eslint-enable @typescript-eslint/no-magic-numbers */
 }
 
 export default function saveOrderForm(

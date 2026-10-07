@@ -45,11 +45,14 @@ function onError(error: ServerError): void {
 function onListening(server: http.Server): void {
   const addr = server.address()
 
-  if (addr !== null) {
-    const bind =
-      typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port.toString()}`
-    debug(`API HTTP Listening on ${bind}`)
+  if (addr === null) {
+    return
   }
+
+  const bind =
+    typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port.toString()}`
+
+  debug(`API HTTP Listening on ${bind}`)
 }
 
 /*
