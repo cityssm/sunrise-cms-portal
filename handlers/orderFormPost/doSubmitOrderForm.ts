@@ -31,6 +31,7 @@ const allowedFields = new Set<string>([
   'purchaserEmail',
   'purchaserRelationship',
 
+  'deceasedSameAsPurchaser',
   'deceasedName',
   'deceasedAddress1',
   'deceasedAddress2',

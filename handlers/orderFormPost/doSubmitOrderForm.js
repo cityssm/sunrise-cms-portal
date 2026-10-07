@@ -23,6 +23,7 @@ const allowedFields = new Set([
     'purchaserPhoneNumber',
     'purchaserEmail',
     'purchaserRelationship',
+    'deceasedSameAsPurchaser',
     'deceasedName',
     'deceasedAddress1',
     'deceasedAddress2',
