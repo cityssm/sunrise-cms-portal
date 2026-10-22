@@ -36,7 +36,7 @@
     "@cityssm/cemetery-utils": "^0.3.0",
     "@cityssm/configurator": "^0.2.0",
     "@cityssm/express-abuse-points": "^4.0.0",
-    "@cityssm/utils-datetime": "^1.4.0",
+    "@cityssm/utils-datetime": "^1.4.1",
     "@fortawesome/fontawesome-free": "^7.3.1",
     "bulma": "^1.0.4",
     "chokidar": "^5.0.0",
