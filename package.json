@@ -39,7 +39,7 @@
     "@cityssm/utils-datetime": "^1.4.0",
     "@fortawesome/fontawesome-free": "^7.3.1",
     "bulma": "^1.0.4",
-    "chokidar": "^5.0.0",
+    "chokidar": "^6.0.0",
     "compression": "^1.8.2",
     "cookie-parser": "^1.4.7",
     "ejs": "^7.0.1",
