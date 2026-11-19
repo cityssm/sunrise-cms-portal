@@ -44,7 +44,7 @@
     "cookie-parser": "^1.4.7",
     "ejs": "^7.0.2",
     "express": "^5.3.0",
-    "express-rate-limit": "^8.7.3",
+    "express-rate-limit": "^8.7.4",
     "http-errors": "^2.0.1",
     "sunrise-cms-shared": "^0.0.11"
   },
